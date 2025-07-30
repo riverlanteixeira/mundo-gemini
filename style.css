@@ -75,7 +75,17 @@ body, html {
 
 #compass-arrow {
     transition: transform 0.5s ease;
-}.imagem-responsiva {
+}
+
+#distance-meter {
+    color: #f00;
+    font-size: 1.5em;
+    text-shadow: 0 0 5px #f00;
+    margin-top: 10px;
+    font-family: 'Courier New', Courier, monospace; /* Fonte mais "digital" */
+}
+
+.imagem-responsiva {
   max-width: 100%;
   height: auto;
 }

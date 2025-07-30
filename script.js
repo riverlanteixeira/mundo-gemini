@@ -15,6 +15,7 @@ window.addEventListener('load', () => {
     const dustinAudio = document.getElementById('dustin-audio');
     const compassContainer = document.getElementById('compass-container');
     const compassArrow = document.getElementById('compass-arrow');
+    const distanceMeter = document.getElementById('distance-meter'); // Novo elemento
     const bikeModel = document.getElementById('bike-model');
 
     // --- Coordenadas do Alvo ---
@@ -95,6 +96,9 @@ window.addEventListener('load', () => {
     function positionSuccess(pos) {
         const userCoords = pos.coords;
         const distance = calculateDistance(userCoords.latitude, userCoords.longitude, targetCoords.latitude, targetCoords.longitude);
+
+        // Atualiza o medidor de distância
+        distanceMeter.textContent = `${distance.toFixed(0)} m`;
 
         if (distance <= 10) {
             // Chegou ao local!
