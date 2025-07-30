@@ -26,6 +26,7 @@ window.addEventListener('load', () => {
 
     let vibrationInterval;
     let navigationWatchId; // Alterado de Interval para WatchId
+    let hasArrived = false; // Garante que a vibração de chegada ocorra apenas uma vez
 
     // --- 1. Lógica de Carregamento ---
     function simulateLoading() {
@@ -110,7 +111,8 @@ window.addEventListener('load', () => {
         // Atualiza o medidor de distância
         distanceMeter.textContent = `${distance.toFixed(0)} m`;
 
-        if (distance <= 10) {
+        if (distance <= 10 && !hasArrived) {
+            hasArrived = true; // Marca que o jogador chegou
             // Chegou ao local!
             compassArrow.classList.add('hidden'); // Esconde apenas a seta
             navigator.vibrate([200, 100, 200]); // Vibra duas vezes
@@ -122,7 +124,7 @@ window.addEventListener('load', () => {
                 wakeLock = null;
                 console.log('Wake Lock liberado.');
             }
-        } else {
+        } else if (distance > 10) {
             // Continua navegando
             const bearing = calculateBearing(userCoords.latitude, userCoords.longitude, targetCoords.latitude, targetCoords.longitude);
             const rotation = bearing - deviceAlpha; // Ajusta a rotação com base na orientação do dispositivo
