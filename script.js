@@ -111,7 +111,7 @@ window.addEventListener('load', () => {
         // Atualiza o medidor de distância
         distanceMeter.textContent = `${distance.toFixed(0)} m`;
 
-        if (distance <= 10 && !hasArrived) {
+        if (distance <= 5 && !hasArrived) {
             hasArrived = true; // Marca que o jogador chegou
             // Chegou ao local!
             compassArrow.classList.add('hidden'); // Esconde apenas a seta
@@ -124,7 +124,7 @@ window.addEventListener('load', () => {
                 wakeLock = null;
                 console.log('Wake Lock liberado.');
             }
-        } else if (distance > 10) {
+        } else if (distance > 5) {
             // Continua navegando
             const bearing = calculateBearing(userCoords.latitude, userCoords.longitude, targetCoords.latitude, targetCoords.longitude);
             const rotation = bearing - deviceAlpha; // Ajusta a rotação com base na orientação do dispositivo
