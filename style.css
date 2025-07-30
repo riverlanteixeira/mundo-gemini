@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Stranger Things';
+    src: url('assets/stranger-things.ttf') format('truetype');
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -7,6 +12,40 @@ body, html {
     background-color: #000;
     color: #fff;
     font-family: sans-serif;
+}
+
+#vfx-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Garante que não interfere com cliques */
+    z-index: 999; /* Fica no topo de tudo */
+    opacity: 0.2; /* Sutileza */
+}
+
+#vfx-overlay::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+    z-index: 2;
+    animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+    0% { opacity: 0.2; }
+    20% { opacity: 0.5; }
+    40% { opacity: 0.3; }
+    60% { opacity: 0.6; }
+    80% { opacity: 0.2; }
+    100% { opacity: 0.4; }
 }
 
 .screen {
@@ -50,12 +89,21 @@ body, html {
 
 #start-button {
     padding: 15px 30px;
-    font-size: 1.2em;
-    background-color: #f00;
-    color: #fff;
-    border: none;
+    font-size: 2em; /* Aumenta o tamanho da fonte */
+    background-color: transparent; /* Fundo transparente */
+    color: #f00; /* Cor do texto vermelha */
+    border: 2px solid #f00; /* Borda vermelha */
     cursor: pointer;
     margin-top: 20px;
+    font-family: 'Stranger Things', sans-serif; /* Aplica a fonte */
+    text-shadow: 0 0 10px #f00, 0 0 20px #f00, 0 0 30px #f00; /* Efeito neon */
+    transition: all 0.3s ease;
+}
+
+#start-button:hover {
+    background-color: #f00;
+    color: #000;
+    box-shadow: 0 0 20px #f00;
 }
 
 #call-screen img {
@@ -79,10 +127,10 @@ body, html {
 
 #distance-meter {
     color: #f00;
-    font-size: 1.5em;
-    text-shadow: 0 0 5px #f00;
+    font-size: 2.5em; /* Aumenta o tamanho */
+    text-shadow: 0 0 5px #f00, 0 0 10px #f00; /* Efeito neon */
     margin-top: 10px;
-    font-family: 'Courier New', Courier, monospace; /* Fonte mais "digital" */
+    font-family: 'Stranger Things', sans-serif; /* Aplica a fonte */
 }
 
 .imagem-responsiva {
