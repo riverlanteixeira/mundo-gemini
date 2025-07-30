@@ -13,7 +13,7 @@
 
     <!-- Tela de Carregamento -->
     <div id="loading-screen" class="screen">
-        <img src="assets/stranger-things-logo.png" alt="Logo Stranger Things">
+        <img src="assets/img/stranger-things-logo.png" alt="Logo Stranger Things">
         <div id="progress-bar-container">
             <div id="progress-bar"></div>
         </div>
@@ -22,16 +22,16 @@
 
     <!-- Tela da Chamada do Dustin -->
     <div id="call-screen" class="screen hidden">
-        <img id="dustin-call-image" src="assets/dustin-call.png" alt="Chamada do Dustin">
+        <img id="dustin-call-image" src="assets/img/dustin-call.png" alt="Chamada do Dustin">
     </div>
 
     <!-- Bússola de Navegação -->
     <div id="compass-container" class="hidden">
-        <img id="compass-arrow" src="assets/compass.svg" alt="Bússola">
+        <img id="compass-arrow" src="assets/img/compass.svg" alt="Bússola">
     </div>
 
     <!-- Áudio da Missão -->
-    <audio id="dustin-audio" src="assets/dustin-intro.mp3"></audio>
+    <audio id="dustin-audio" src="assets/audio/dustin-intro.mp3"></audio>
 
     <!-- Cena de Realidade Aumentada (AR) -->
     <a-scene
@@ -44,7 +44,7 @@
         <!-- Objeto 3D da Bicicleta -->
         <a-entity
             id="bike-model"
-            gltf-model="url(assets/bicicleta-will.glb)"
+            gltf-model="url(assets/models/bicicleta-will.glb)"
             gps-new-entity-place="latitude: -27.639914348589738; longitude: -48.667501536175926"
             scale="0.5 0.5 0.5"
             visible="false"

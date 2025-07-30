@@ -24,7 +24,7 @@ window.addEventListener('load', () => {
     };
 
     let vibrationInterval;
-    let navigationInterval;
+    let navigationWatchId; // Alterado de Interval para WatchId
 
     // --- 1. Lógica de Carregamento ---
     function simulateLoading() {
@@ -71,22 +71,19 @@ window.addEventListener('load', () => {
         // Pede permissão e inicia a navegação
         if (navigator.geolocation) {
             compassContainer.classList.remove('hidden');
-            navigationInterval = setInterval(updateNavigation, 1000); // Atualiza a cada segundo
+            // Usa watchPosition para uma atualização mais eficiente
+            const options = {
+                enableHighAccuracy: true,
+                maximumAge: 0,
+                timeout: 10000
+            };
+            navigationWatchId = navigator.geolocation.watchPosition(positionSuccess, positionError, options);
         } else {
             alert("Geolocalização não é suportada por este navegador.");
         }
     });
 
     // --- 5. Lógica de Navegação e Descoberta ---
-    function updateNavigation() {
-        const options = {
-            enableHighAccuracy: true,
-            maximumAge: 0,
-            timeout: 10000
-        };
-
-        navigator.geolocation.getCurrentPosition(positionSuccess, positionError, options);
-    }
 
     function positionSuccess(pos) {
         const userCoords = pos.coords;
@@ -96,7 +93,7 @@ window.addEventListener('load', () => {
 
         if (distance <= 10) {
             // Chegou ao local!
-            clearInterval(navigationInterval);
+            navigator.geolocation.clearWatch(navigationWatchId); // Para de observar a posição
             compassContainer.classList.add('hidden');
             navigator.vibrate([200, 100, 200]); // Vibra duas vezes
             bikeModel.setAttribute('visible', 'true');

@@ -7,7 +7,7 @@
   "theme_color": "#000000",
   "description": "Um jogo de Realidade Aumentada no universo de Stranger Things.",
   "icons": [{
-    "src": "assets/stranger-things-logo.png",
+    "src": "assets/img/stranger-things-logo.png",
     "sizes": "512x512",
     "type": "image/png"
   }]
