@@ -70,8 +70,8 @@ window.addEventListener('load', () => {
         callScreen.classList.add('hidden');
         bikeModelViewer.classList.remove('hidden'); // Mostra o model-viewer
 
-        // Inicia o modo AR automaticamente (opcional, pode ser um botão)
-        // bikeModelViewer.activateAR();
+        // Tenta iniciar o modo AR automaticamente
+        bikeModelViewer.activateAR();
 
         // Libera o Wake Lock quando a missão é concluída (se não for mais necessário)
         if (wakeLock !== null) {
