@@ -49,16 +49,16 @@
         <a-light type="ambient" color="#888"></a-light>
         <a-light type="directional" position="1 1 0" intensity="0.5"></a-light>
 
-        <a-camera gps-new-camera="gpsMinDistance: 5">
-            <!-- Objeto 3D da Bicicleta, agora filho da câmera -->
-            <a-entity
-                id="bike-model"
-                gltf-model="url(assets/models/bicicleta-will.glb)"
-                position="0 -1 -2" <!-- 2 metros à frente e um pouco para baixo -->
-                scale="0.5 0.5 0.5"
-                visible="false"
-            ></a-entity>
-        </a-camera>
+        <a-camera gps-new-camera="gpsMinDistance: 5"></a-camera>
+
+        <!-- Objeto 3D da Bicicleta -->
+        <a-entity
+            id="bike-model"
+            gltf-model="url(assets/models/bicicleta-will.glb)"
+            gps-new-entity-place="latitude: -27.630917802426634; longitude: -48.679809836619185"
+            scale="0.5 0.5 0.5"
+            visible="false"
+        ></a-entity>
 
     </a-scene>
 

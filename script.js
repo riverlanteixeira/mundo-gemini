@@ -20,8 +20,8 @@ window.addEventListener('load', () => {
 
     // --- Coordenadas do Alvo ---
     const targetCoords = {
-        latitude: -27.63985373876488,
-        longitude: -48.66778379808835
+        latitude: -27.630917802426634, 
+        longitude: -48.679809836619185
     };
 
     let vibrationInterval;
@@ -112,7 +112,6 @@ window.addEventListener('load', () => {
 
         if (distance <= 10) {
             // Chegou ao local!
-            navigator.geolocation.clearWatch(navigationWatchId); // Para de observar a posição
             compassArrow.classList.add('hidden'); // Esconde apenas a seta
             navigator.vibrate([200, 100, 200]); // Vibra duas vezes
             bikeModel.setAttribute('visible', 'true');
