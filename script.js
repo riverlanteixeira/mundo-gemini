@@ -61,13 +61,13 @@ window.addEventListener('load', () => {
             navigator.vibrate(0);
         }
 
-        // Toca o áudio e esconde a tela de chamada
+        // Toca o áudio
         dustinAudio.play();
-        callScreen.classList.add('hidden');
     });
 
     // --- 4. Início da Navegação ---
     dustinAudio.addEventListener('ended', () => {
+        callScreen.classList.add('hidden'); // Esconde a tela de chamada AQUI
         // Pede permissão e inicia a navegação
         if (navigator.geolocation) {
             compassContainer.classList.remove('hidden');
@@ -84,12 +84,17 @@ window.addEventListener('load', () => {
     });
 
     // --- 5. Lógica de Navegação e Descoberta ---
+    let deviceAlpha = 0;
+    window.addEventListener('deviceorientation', (event) => {
+        if (event.alpha) {
+            // Usa webkitCompassHeading para compatibilidade com iOS
+            deviceAlpha = event.webkitCompassHeading || event.alpha;
+        }
+    });
 
     function positionSuccess(pos) {
         const userCoords = pos.coords;
         const distance = calculateDistance(userCoords.latitude, userCoords.longitude, targetCoords.latitude, targetCoords.longitude);
-
-        console.log(`Distância até o alvo: ${distance.toFixed(2)} metros`);
 
         if (distance <= 10) {
             // Chegou ao local!
@@ -101,7 +106,8 @@ window.addEventListener('load', () => {
         } else {
             // Continua navegando
             const bearing = calculateBearing(userCoords.latitude, userCoords.longitude, targetCoords.latitude, targetCoords.longitude);
-            compassArrow.style.transform = `rotate(${bearing}deg)`;
+            const rotation = bearing - deviceAlpha; // Ajusta a rotação com base na orientação do dispositivo
+            compassArrow.style.transform = `rotate(${rotation}deg)`;
         }
     }
 
