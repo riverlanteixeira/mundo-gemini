@@ -43,14 +43,24 @@ window.addEventListener('load', () => {
 
     simulateLoading();
 
+    let wakeLock = null;
+
     // --- 2. Início do Jogo ---
-    startButton.addEventListener('click', () => {
+    startButton.addEventListener('click', async () => { // Adicionado async
         loadingScreen.classList.add('hidden');
         callScreen.classList.remove('hidden');
 
         // Inicia a vibração contínua
         if ('vibrate' in navigator) {
             vibrationInterval = setInterval(() => navigator.vibrate(500), 600);
+        }
+
+        // Solicita o Wake Lock para manter a tela ligada
+        try {
+            wakeLock = await navigator.wakeLock.request('screen');
+            console.log('Wake Lock ativado!');
+        } catch (err) {
+            console.error(`${err.name}, ${err.message}`);
         }
     });
 
@@ -103,10 +113,17 @@ window.addEventListener('load', () => {
         if (distance <= 10) {
             // Chegou ao local!
             navigator.geolocation.clearWatch(navigationWatchId); // Para de observar a posição
-            compassContainer.classList.add('hidden');
+            compassArrow.classList.add('hidden'); // Esconde apenas a seta
             navigator.vibrate([200, 100, 200]); // Vibra duas vezes
             bikeModel.setAttribute('visible', 'true');
             alert('Você está perto! Use a câmera para encontrar a bicicleta do Will!');
+
+            // Libera o Wake Lock quando a missão é concluída
+            if (wakeLock !== null) {
+                wakeLock.release();
+                wakeLock = null;
+                console.log('Wake Lock liberado.');
+            }
         } else {
             // Continua navegando
             const bearing = calculateBearing(userCoords.latitude, userCoords.longitude, targetCoords.latitude, targetCoords.longitude);
