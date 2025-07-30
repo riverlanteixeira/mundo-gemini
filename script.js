@@ -115,7 +115,6 @@ window.addEventListener('load', () => {
             compassArrow.classList.add('hidden'); // Esconde apenas a seta
             navigator.vibrate([200, 100, 200]); // Vibra duas vezes
             bikeModel.setAttribute('visible', 'true');
-            alert('Você está perto! Use a câmera para encontrar a bicicleta do Will!');
 
             // Libera o Wake Lock quando a missão é concluída
             if (wakeLock !== null) {
