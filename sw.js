@@ -5,13 +5,15 @@ const assetsToCache = [
   'style.css',
   'script.js',
   'manifest.json',
-  'assets/stranger-things-logo.png',
-  'assets/dustin-call.png',
-  'assets/dustin-intro.mp3',
-  'assets/bicicleta-will.glb',
-  'assets/compass.svg',
+  'assets/img/stranger-things-logo.png',
+  'assets/img/dustin-call.png',
+  'assets/img/compass.svg',
+  'assets/img/icon-192.png',
+  'assets/img/icon-512.png',
+  'assets/audio/dustin-intro.mp3',
+  'assets/models/bicicleta-will.glb',
   'https://aframe.io/releases/1.5.0/aframe.min.js',
-  'https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js'
+  'https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-gps.js'
 ];
 
 // Evento de instalação: abre o cache e adiciona os assets

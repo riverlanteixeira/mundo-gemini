@@ -107,6 +107,7 @@ window.addEventListener('load', () => {
 
     function positionError(err) {
         console.warn(`ERRO(${err.code}): ${err.message}`);
+        alert(`ERRO(${err.code}): ${err.message}`);
         // Poderia mostrar uma mensagem de erro para o usuário aqui
     }
 

@@ -27,7 +27,7 @@
 
     <!-- Bússola de Navegação -->
     <div id="compass-container" class="hidden">
-        <img id="compass-arrow" src="assets/img/compass.svg" alt="Bússola">
+        <img id="compass-arrow" src="compass.svg" alt="Bússola">
     </div>
 
     <!-- Áudio da Missão -->
@@ -37,7 +37,7 @@
     <a-scene
         vr-mode-ui="enabled: false"
         arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
-        renderer="antialias: true; alpha: true"
+        renderer="colorManagement: true;"
     >
         <a-camera gps-new-camera="gpsMinDistance: 5"></a-camera>
 
