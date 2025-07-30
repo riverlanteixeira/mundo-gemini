@@ -119,6 +119,13 @@ body, html {
     left: 50%;
     transform: translateX(-50%);
     z-index: 5;
+    background-color: rgba(20, 20, 20, 0.85);
+    border: 2px solid #f00;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+    text-align: center;
+    width: 200px; /* Largura fixa para parecer um dispositivo */
 }
 
 #compass-arrow {

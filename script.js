@@ -20,8 +20,8 @@ window.addEventListener('load', () => {
 
     // --- Coordenadas do Alvo ---
     const targetCoords = {
-        latitude: -27.639914348589738,
-        longitude: -48.667501536175926
+        latitude: -27.63985373876488,
+        longitude: -48.66778379808835
     };
 
     let vibrationInterval;
