@@ -75,7 +75,7 @@ window.addEventListener('load', () => {
             const options = {
                 enableHighAccuracy: true,
                 maximumAge: 0,
-                timeout: 10000
+                timeout: 20000
             };
             navigationWatchId = navigator.geolocation.watchPosition(positionSuccess, positionError, options);
         } else {
