@@ -6,8 +6,7 @@
     <title>Stranger Things AR</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
 <body>
 
@@ -15,7 +14,7 @@
 
     <!-- Tela de Carregamento -->
     <div id="loading-screen" class="screen">
-        <img src="assets/img/stranger-things-logo.png" alt="ogo Stranger Things" class="imagem-responsiva">
+        <img src="assets/img/stranger-things-logo.png" alt="Logo Stranger Things" class="imagem-responsiva">
         <div id="progress-bar-container">
             <div id="progress-bar"></div>
         </div>
@@ -27,41 +26,23 @@
         <img id="dustin-call-image" src="assets/img/dustin-call.png" alt="Chamada do Dustin">
     </div>
 
-    <!-- Bússola de Navegação -->
-    <div id="compass-container" class="hidden">
-        <img id="compass-arrow" src="compass.svg" alt="Bússola">
-        <div id="distance-meter">-- m</div>
-    </div>
-
     <!-- Áudio da Missão -->
     <audio id="dustin-audio" src="assets/audio/dustin-intro.mp3"></audio>
 
-    <!-- Cena de Realidade Aumentada (AR) -->
-    <a-scene
-        vr-mode-ui="enabled: false"
-        arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
-        renderer="colorManagement: true;"
-    >
-        <a-assets>
-            <a-asset-item id="bike-glb" src="assets/models/bicicleta-will.glb"></a-asset-item>
-        </a-assets>
-
-        <a-light type="ambient" color="#888"></a-light>
-        <a-light type="directional" position="1 1 0" intensity="0.5"></a-light>
-
-        <a-camera gps-new-camera="gpsMinDistance: 5"></a-camera>
-
-        <!-- Objeto 3D da Bicicleta -->
-        <a-entity
-            id="bike-model"
-            gltf-model="#bike-glb"
-            gps-new-entity-place="latitude: -27.630917802426634; longitude: -48.679809836619185"
-            position="0 0 0" <!-- Garante que esteja no chão -->
-            scale="0.5 0.5 0.5"
-            visible="true"
-        ></a-entity>
-
-    </a-scene>
+    <!-- Model Viewer para a Bicicleta -->
+    <model-viewer
+        id="bike-model"
+        src="assets/models/bicicleta-will.glb"
+        alt="Bicicleta do Will"
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        ar-placement="floor"
+        shadow-intensity="1"
+        camera-controls
+        autoplay
+        animation-name="*"
+        class="hidden" <!-- Escondido inicialmente -->
+    ></model-viewer>
 
     <script src="script.js"></script>
 </body>
