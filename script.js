@@ -84,19 +84,9 @@ window.addEventListener('load', () => {
     dustinAudio.addEventListener('ended', () => {
         callScreen.classList.add('hidden');
 
-        // Pede permissão e inicia a navegação
-        if (navigator.geolocation) {
-            compassContainer.classList.remove('hidden');
-            // Usa watchPosition para uma atualização mais eficiente
-            const options = {
-                enableHighAccuracy: true,
-                maximumAge: 0,
-                timeout: 20000
-            };
-            navigationWatchId = navigator.geolocation.watchPosition(positionSuccess, positionError, options);
-        } else {
-            alert("Geolocalização não é suportada por este navegador.");
-        }
+        // Ativa a câmera e o modo AR diretamente
+        bikeModelViewer.classList.remove('hidden');
+        bikeModelViewer.activateAR();
     });
 
     // --- 5. Lógica de Navegação e Descoberta ---
