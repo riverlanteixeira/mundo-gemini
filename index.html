@@ -36,6 +36,8 @@
     </div>
 
     <!-- Model Viewer para a Bicicleta -->
+    <!-- Tenta ajustar o tamanho automaticamente para RA -->
+    <!-- Escondido inicialmente -->
     <model-viewer
         id="bike-model"
         src="assets/models/bicicleta-will.glb"
@@ -43,12 +45,12 @@
         ar
         ar-modes="webxr scene-viewer quick-look"
         ar-placement="floor"
-        ar-scale="auto" <!-- Tenta ajustar o tamanho automaticamente para RA -->
+        ar-scale="auto"
         shadow-intensity="1"
         camera-controls
         autoplay
         animation-name="*"
-        class="hidden" <!-- Escondido inicialmente -->
+        class="hidden"
     ></model-viewer>
 
     
