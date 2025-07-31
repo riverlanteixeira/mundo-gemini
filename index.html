@@ -29,6 +29,12 @@
     <!-- Áudio da Missão -->
     <audio id="dustin-audio" src="assets/audio/dustin-intro.mp3"></audio>
 
+    <!-- Bússola de Navegação -->
+    <div id="compass-container" class="hidden">
+        <img id="compass-arrow" src="compass.svg" alt="Bússola">
+        <div id="distance-meter">-- m</div>
+    </div>
+
     <!-- Model Viewer para a Bicicleta -->
     <model-viewer
         id="bike-model"
@@ -37,7 +43,7 @@
         ar
         ar-modes="webxr scene-viewer quick-look"
         ar-placement="floor"
-        ar-scale="fixed" <!-- Usa o tamanho original do modelo -->
+        ar-scale="auto" <!-- Tenta ajustar o tamanho automaticamente para RA -->
         shadow-intensity="1"
         camera-controls
         autoplay
