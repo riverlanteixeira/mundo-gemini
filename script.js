@@ -67,7 +67,7 @@ window.addEventListener('load', () => {
         }
     });
 
-    // --- 3. Chamada do Dustin ---
+    // --- 3. Chamada do Dustin --- 
     dustinCallImage.addEventListener('click', () => {
         // Para a vibração
         if (vibrationInterval) {
